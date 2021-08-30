@@ -1,0 +1,27 @@
+{
+  "short_name": "Pocket Feed",
+  "name": "Pocket Feed",
+  "description": "The one-stop shop for content you love",
+  "start_url": "/",
+  "background_color": "#fcf8f4",
+  "theme_color": "#fcf8f4",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "img/icon-192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "./img/icon-256.png",
+      "type": "image/png",
+      "sizes": "256x256"
+    },
+    {
+      "src": "./img/icon-512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ]
+}

@@ -8,8 +8,27 @@
     "start": "next start"
   },
   "dependencies": {
-    "next": "11.0.1",
+    "@auth0/nextjs-auth0": "^1.5.0",
+    "@hughrun/feedfinder": "^1.0.6",
+    "dayjs": "^1.10.6",
+    "framer-motion": "^4.1.17",
+    "html-entities": "^2.3.2",
+    "mongoose": "^5.13.6",
+    "nanoid": "^3.1.24",
+    "next": "^11.1.0",
     "react": "17.0.2",
-    "react-dom": "17.0.2"
+    "react-dom": "17.0.2",
+    "react-hot-toast": "^2.1.0",
+    "react-modal-video": "^1.2.8",
+    "react-player": "^2.9.0",
+    "react-responsive-modal": "^6.1.0",
+    "rss-finder": "^2.1.5",
+    "rss-to-json": "^2.0.2",
+    "sharp": "^0.29.0",
+    "styled-icons": "^10.37.0",
+    "yt-channel-info": "^2.2.0"
+  },
+  "devDependencies": {
+    "babel-plugin-transform-remove-console": "^6.9.4"
   }
 }
