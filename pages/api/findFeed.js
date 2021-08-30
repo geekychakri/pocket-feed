@@ -1,8 +1,9 @@
 import feedFinder from "@hughrun/feedfinder";
 import rssFinder from "rss-finder";
 import ytch from "yt-channel-info";
+import { withApiAuthRequired } from "@auth0/nextjs-auth0";
 
-export default async (req, res) => {
+export default withApiAuthRequired(async (req, res) => {
   const { url, category } = req.body;
 
   switch (category) {
@@ -109,4 +110,4 @@ export default async (req, res) => {
       }
     }
   }
-};
+});
