@@ -32,7 +32,7 @@ export default withApiAuthRequired(async (req, res) => {
         },
       }
     );
-    res.status(204).json({});
+    res.status(200).json({});
   } catch (err) {
     console.log(err);
     res.status(500).json({ msg: "Something went wrong" });

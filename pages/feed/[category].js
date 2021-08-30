@@ -9,7 +9,7 @@ import { Plus } from "@styled-icons/boxicons-regular/Plus";
 import toast, { Toaster } from "react-hot-toast";
 import { getSession, withPageAuthRequired } from "@auth0/nextjs-auth0";
 
-import { connect } from "./../../utils/db";
+import dbConnect from "../../utils/db";
 import User from "./../../models/User";
 import { DeleteContext } from "../../contexts/DeleteContext";
 
@@ -154,9 +154,9 @@ export default CategoryFeed;
 
 export const getServerSideProps = withPageAuthRequired({
   async getServerSideProps(context) {
-    connect();
-
     const { req, res, query } = context;
+
+    await dbConnect();
 
     // console.log("QUERY", query.category);
 

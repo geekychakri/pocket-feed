@@ -1,13 +1,16 @@
 import { getSession, withApiAuthRequired } from "@auth0/nextjs-auth0";
 
-import { connect } from "../../utils/db";
+// import { connect } from "../../utils/db";
+import dbConnect from "../../utils/db";
 import User from "../../models/User";
 
-connect();
+// connect();
 
 export default withApiAuthRequired(async (req, res) => {
   console.log("REQ_BODY", req.body);
   console.log("REQ_METHOD", req.method);
+
+  await dbConnect();
 
   const { user } = await getSession(req, res);
 
@@ -22,7 +25,7 @@ export default withApiAuthRequired(async (req, res) => {
     case "POST": {
       try {
         const user = await User.create(req.body);
-        res.status(201).json({ user });
+        res.status(200).json({ user });
       } catch (err) {}
       break;
     }
@@ -47,7 +50,7 @@ export default withApiAuthRequired(async (req, res) => {
             new: true,
           }
         );
-        res.status(204).json({});
+        res.status(200).json(feed);
       } catch (err) {
         res.status(500).json({ msg: "Something went wrong" });
       }

@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import { getSession, withPageAuthRequired } from "@auth0/nextjs-auth0";
 import parse from "rss-to-json";
 
-import { connect } from "./../../../utils/db";
+import dbConnect from "../../../utils/db";
 import User from "./../../../models/User";
 import FeedList from "../../../components/FeedList";
 import TwitterList from "../../../components/TwitterList";
@@ -34,10 +34,10 @@ export default List;
 
 export const getServerSideProps = withPageAuthRequired({
   async getServerSideProps(context) {
-    connect();
-
     const { req, res, query } = context;
     console.log(query.id);
+
+    await dbConnect();
 
     const session = await getSession(req, res);
 
