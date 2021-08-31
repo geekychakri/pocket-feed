@@ -6,6 +6,7 @@ import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { ChevronRight } from "@styled-icons/boxicons-solid/ChevronRight";
 import { Trash } from "@styled-icons/boxicons-solid/Trash";
 import { Plus } from "@styled-icons/boxicons-regular/Plus";
+import { FileBlank } from "@styled-icons/boxicons-regular/FileBlank";
 import toast, { Toaster } from "react-hot-toast";
 import { getSession, withPageAuthRequired } from "@auth0/nextjs-auth0";
 
@@ -137,7 +138,11 @@ function CategoryFeed({ feedData }) {
         </div>
       ) : (
         <div className="category__empty">
-          <p className="category__empty-text">You don't have any feed yet.</p>
+          <FileBlank size={60} opacity="0.5" />
+          <p className="category__empty-heading">No Feeds Yet</p>
+          <p className="category__empty-text">
+            The feed you add will appear here.
+          </p>
           <Link href="/add">
             <a className="category__empty-link">
               <Plus size={28} />

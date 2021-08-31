@@ -513,10 +513,16 @@ body {
   margin-bottom: 10rem;
 }
 
-.category__empty-text {
+.category__empty-heading {
   font-size: 3rem;
   margin-bottom: 2.5rem;
-  opacity: 0.8;
+  opacity: 0.5;
+}
+
+.category__empty-text {
+  font-size: 2.5rem;
+  opacity: 0.5;
+  margin-bottom: 2rem;
 }
 
 .category__empty-link {
@@ -526,7 +532,7 @@ body {
   background-color: var(--color-btn);
   color: var(--color-btn-text);
   font-size: 2rem;
-  padding: 1.4rem 3rem;
+  padding: 1.2rem 3rem;
   border-radius: 5px;
 }
 
@@ -1076,7 +1082,7 @@ body {
 }
 
 /* iPad Landscape */
-@media only screen and (min-device-width: 64em) and (max-device-height: 48em) and (orientation: landscape) {
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 1) {
   html {
     font-size: 75%; /*1rem = 12px*/
   }
