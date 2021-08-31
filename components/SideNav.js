@@ -9,6 +9,7 @@ import { News } from "@styled-icons/boxicons-regular/News";
 function SideNav() {
   const router = useRouter();
   const category = router.query.category;
+
   return (
     <div className="sidenav">
       <ul className="sidenav__list">
@@ -17,7 +18,7 @@ function SideNav() {
             <a
               className={`sidenav__link ${category === "blog" ? "active" : ""}`}
             >
-              <Blog size={28} title="Blog" />
+              <Blog size={24} title="Blog" />
               <span className="u-mt1">Blog</span>
             </a>
           </Link>
@@ -29,7 +30,7 @@ function SideNav() {
                 category === "twitter" ? "active" : ""
               }`}
             >
-              <Twitter size={28} title="twitter" />
+              <Twitter size={24} title="twitter" />
               <span className="u-mt1">Twitter</span>
             </a>
           </Link>
@@ -41,7 +42,7 @@ function SideNav() {
                 category === "reddit" ? "active" : ""
               }`}
             >
-              <Reddit size={28} />
+              <Reddit size={24} />
               <span className="u-mt1">Reddit</span>
             </a>
           </Link>
@@ -53,7 +54,7 @@ function SideNav() {
                 category === "podcast" ? "active" : ""
               }`}
             >
-              <Podcast size={28} />
+              <Podcast size={24} />
               <span className="u-mt1">Podcast</span>
             </a>
           </Link>
@@ -63,7 +64,7 @@ function SideNav() {
             <a
               className={`sidenav__link ${category === "news" ? "active" : ""}`}
             >
-              <News size={28} />
+              <News size={24} />
               <span className="u-mt1">News</span>
             </a>
           </Link>
@@ -75,7 +76,7 @@ function SideNav() {
                 category === "youtube" ? "active" : ""
               }`}
             >
-              <Youtube size={28} />
+              <Youtube size={24} />
               <span className="u-mt1">YouTube</span>
             </a>
           </Link>
