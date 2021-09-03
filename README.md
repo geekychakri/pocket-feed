@@ -63,3 +63,7 @@ Start the app
 ## Author
 
 [GeekyChakri](https://www.github.com/GeekyChakri)
+
+## License
+
+[MIT](LICENSE)
