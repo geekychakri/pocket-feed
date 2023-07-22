@@ -51,10 +51,8 @@ function Navbar() {
   }, [isDarkMode]);
 
   const Logo = () => (
-    <Link href="/">
-      <a className="navigation__logo">
-        <img src="/logo.png" width="60" height="60" alt="logo" />
-      </a>
+    <Link href="/" className="navigation__logo">
+      <img src="/logo.png" width="60" height="60" alt="logo" />
     </Link>
   );
 
@@ -110,10 +108,8 @@ function Navbar() {
       ) : null}
 
       {router.pathname !== "/add" ? (
-        <Link href="/add">
-          <a className="navigation__add u-mr3" title="Add a feed">
-            <AddToList size={28} />
-          </a>
+        <Link href="/add" className="navigation__add u-mr3" title="Add a feed">
+          <AddToList size={28} />
         </Link>
       ) : null}
 

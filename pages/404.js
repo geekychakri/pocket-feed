@@ -13,8 +13,8 @@ function Custom404() {
         </span>
       </p>
 
-      <Link href="/">
-        <a className="error-page__btn">Read Now</a>
+      <Link href="/" className="error-page__btn">
+        Read Now
       </Link>
     </div>
   );

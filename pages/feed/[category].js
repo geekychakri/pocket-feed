@@ -1,6 +1,7 @@
 import { useState, useContext } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
+import Image from "next/image";
 
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { ChevronRight } from "@styled-icons/boxicons-solid/ChevronRight";
@@ -89,24 +90,23 @@ function CategoryFeed({ feedData }) {
               >
                 <Link
                   href={`/feed/${router.query.category}/list?id=${item.feedId}`}
+                  className="category-feed__item-link"
                 >
-                  <a className="category-feed__item-link">
-                    {item.favicon ? (
-                      <img
-                        src={item.favicon}
-                        alt="feed-logo"
-                        className="category-feed__image"
-                        width="30"
-                        height="30"
-                      />
-                    ) : (
-                      <span className="add__feed-image category__default-img">
-                        {item.title.split("")[0]}
-                      </span>
-                    )}
-
-                    <span className="u-ml1-5">{item.title}</span>
-                  </a>
+                  {item.favicon ? (
+                    <Image
+                      src={item.favicon}
+                      alt="feed-logo"
+                      className="category-feed__image"
+                      width="30"
+                      height="30"
+                      quality={80}
+                    />
+                  ) : (
+                    <span className="add__feed-image category__default-img">
+                      {item.title.split("")[0]}
+                    </span>
+                  )}
+                  <span className="u-ml1-5">{item.title}</span>
                 </Link>
 
                 <div className="category__feed-icon">
@@ -143,11 +143,9 @@ function CategoryFeed({ feedData }) {
           <p className="category__empty-text">
             The feed you add will appear here.
           </p>
-          <Link href="/add">
-            <a className="category__empty-link">
-              <Plus size={28} />
-              <span className="u-ml1">Add a feed</span>
-            </a>
+          <Link href="/add" className="category__empty-link">
+            <Plus size={28} />
+            <span className="u-ml1">Add a feed</span>
           </Link>
         </div>
       )}

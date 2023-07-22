@@ -185,7 +185,7 @@ function Add() {
           onChange={handleChange}
         >
           <option value="youtube">YouTube</option>
-          <option value="twitter">Twitter</option>
+          {/* <option value="twitter">Twitter</option> */}
           <option value="reddit">Reddit</option>
           <option value="news">News</option>
           <option value="blog">Blog</option>

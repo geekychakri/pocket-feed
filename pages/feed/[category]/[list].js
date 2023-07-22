@@ -6,9 +6,8 @@ import parse from "rss-to-json";
 import dbConnect from "../../../utils/db";
 import User from "./../../../models/User";
 import FeedList from "../../../components/FeedList";
-import TwitterList from "../../../components/TwitterList";
 
-function List({ feedList, feedLink, feedTitle, tweetList }) {
+function List({ feedList, feedLink, feedTitle }) {
   console.log(feedLink);
   const router = useRouter();
   // console.log("ROUTER", router.query.category);
@@ -16,16 +15,12 @@ function List({ feedList, feedLink, feedTitle, tweetList }) {
 
   return (
     <div className="list">
-      {router.query.category === "twitter" ? (
-        <TwitterList tweetList={tweetList} />
-      ) : (
-        <FeedList
-          feed={{ feedList, feedLink, feedTitle }}
-          feedList={feedList}
-          feedLink={feedLink}
-          feedTitle={feedTitle}
-        />
-      )}
+      <FeedList
+        feed={{ feedList, feedLink, feedTitle }}
+        feedList={feedList}
+        feedLink={feedLink}
+        feedTitle={feedTitle}
+      />
     </div>
   );
 }
