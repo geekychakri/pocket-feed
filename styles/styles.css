@@ -330,6 +330,7 @@ body {
 
 /*SideNav*/
 .sidenav {
+  display: flex;
   background-color: var(--color-nav-bg);
   position: fixed;
   right: 0;
@@ -342,12 +343,20 @@ body {
 }
 
 .sidenav__list {
-  height: 100%;
+  /* height: 100%;
+  display: flex; */
+  flex: 1;
+  display: flex;
+  flex-wrap: nowrap;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
 }
 
 .sidenav__item {
-  width: 20%;
+  /* width: 20%; */
   /* text-align: center; */
+  flex: 1;
   margin-top: 0.5rem;
   padding: 0.8rem 3rem;
   display: inline-block;
@@ -429,6 +438,7 @@ body {
 
 .add__btn {
   width: 100%;
+  height: 5rem;
   font-size: 2rem;
   font-weight: 600;
   padding: 1.5rem 0;
@@ -562,7 +572,7 @@ body {
   border-radius: 100%;
 }
 
-.category__feed-icon {
+.category-feed__icon {
   /* flex: 1; */
   /* background-color: skyblue; */
   cursor: pointer;
@@ -672,10 +682,14 @@ body {
   /* align-self: flex-start; */
   font-weight: 600;
   font-size: 1.9rem;
-  padding: 1rem 2rem;
+  padding: 0.5rem 1rem;
   border-radius: 5px;
   background-color: var(--color-label);
   /* border-color: transparent; */
+}
+
+.list__item-play {
+  padding: 0.5rem 2rem;
 }
 
 .list__item-date {
@@ -1009,7 +1023,8 @@ body {
   }
 
   .sidenav__item {
-    width: auto;
+    /* width: 20%; */
+    overflow: hidden;
     padding: 0.5rem 3rem;
   }
 
@@ -1035,16 +1050,19 @@ body {
     /* display: none; */
     font-size: 3.5rem;
   }
+
+  .category-feed__item,
+  .list__item-title,
+  .list__item-content,
+  .list__item-date {
+    font-size: 1.8rem;
+  }
 }
 
 /*iPad Port*/
 @media only screen and (min-device-width: 48em) and (max-device-width: 64em) and (orientation: portrait) {
   html {
     font-size: 75%; /*1rem = 12px*/
-  }
-
-  .sidenav__item {
-    width: 16.66%;
   }
 
   .list__podcast {
@@ -1126,4 +1144,25 @@ body {
   html {
     font-size: 87.5%; /*1rem = 14px*/
   }
+}
+
+/*Error boundary*/
+.error-boundary {
+  padding: 2rem;
+}
+
+.error-boundary__heading {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.error-boundary__btn {
+  font-size: 1.8rem;
+  font-weight: 600;
+  padding: 1rem;
+  background-color: #121212;
+  color: #fff;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
 }

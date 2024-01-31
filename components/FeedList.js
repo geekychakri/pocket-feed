@@ -21,10 +21,9 @@ const ModalVideo = dynamic(() => import("react-modal-video"), {
 dayjs.extend(relativeTime);
 
 function FeedList({ feedList, feedLink, feedTitle }) {
-  // console.log(feedList);
-  let latestPodcastTitle = feedList[0].title || "";
+  let latestPodcastTitle = feedList[0]?.title || "";
   let latestPodcastURL = "";
-  if (feedList[0].enclosures.length) {
+  if (feedList[0]?.enclosures?.length) {
     latestPodcastURL = feedList[0].enclosures[0].url;
   }
 
@@ -80,7 +79,7 @@ function FeedList({ feedList, feedLink, feedTitle }) {
   return (
     <>
       <h1 className="list__heading">{feedTitle}</h1>
-      {isPodcast && feedList[0].enclosures.length ? <PodcastPlayer /> : null}
+      {isPodcast && feedList[0]?.enclosures.length ? <PodcastPlayer /> : null}
       <AnimatePresence>
         {feedList.map((item, i) => {
           return (
@@ -143,7 +142,7 @@ function FeedList({ feedList, feedLink, feedTitle }) {
                         }}
                       >
                         <ControllerPlay size={28} />
-                        <span style={{ marginLeft: "2px" }}>Play</span>
+                        <span style={{ marginLeft: "1px" }}>Play</span>
                       </button>
                     )}
                     {isPodcast && feedList[0].enclosures.length ? (
@@ -156,7 +155,7 @@ function FeedList({ feedList, feedLink, feedTitle }) {
                         }}
                       >
                         <ControllerPlay size={28} />
-                        <span style={{ marginLeft: "2px" }}>Play</span>
+                        <span style={{ marginLeft: "1px" }}>Play</span>
                       </button>
                     ) : (
                       isPodcast && (

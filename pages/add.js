@@ -5,8 +5,10 @@ import toast, { Toaster } from "react-hot-toast";
 import { nanoid } from "nanoid";
 import { withPageAuthRequired, useUser } from "@auth0/nextjs-auth0";
 
+import ImageWithFallback from "../components/ImageWithFallback";
+
 const toastStyles = {
-  fontSize: "2rem",
+  fontSize: "1.6rem",
   fontWeight: "600",
   backgroundColor: "#181818",
   color: "#fff",
@@ -200,12 +202,14 @@ function Add() {
       {!isObjectEmpty && (
         <div className="add__feed">
           {feedData.favicon ? (
-            <img
+            <ImageWithFallback
               src={feedData.favicon}
-              width="25"
-              height="25"
-              alt="icon"
+              alt="logo"
               className="add__feed-icon"
+              width="32"
+              height="32"
+              quality={80}
+              title={feedData.title}
             />
           ) : (
             <div className="add__feed-image add__default-img">

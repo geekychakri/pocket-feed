@@ -1,5 +1,3 @@
-import { useRouter } from "next/router";
-
 import { getSession, withPageAuthRequired } from "@auth0/nextjs-auth0";
 import parse from "rss-to-json";
 
@@ -9,7 +7,6 @@ import FeedList from "../../../components/FeedList";
 
 function List({ feedList, feedLink, feedTitle }) {
   console.log(feedLink);
-  const router = useRouter();
   // console.log("ROUTER", router.query.category);
   // console.log(router.query.id);
 

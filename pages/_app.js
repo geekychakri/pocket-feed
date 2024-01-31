@@ -12,6 +12,7 @@ import "react-modal-video/css/modal-video.min.css";
 import Layout from "../components/Layout";
 import DeleteContextProvider from "../contexts/DeleteContext";
 import PFLoader from "./../components/PFLoader";
+import ErrorBoundary from "../components/Errorboundary";
 
 function MyApp({ Component, pageProps }) {
   const [isLoading, setIsLoading] = useState(false);
@@ -69,7 +70,13 @@ function MyApp({ Component, pageProps }) {
       <UserProvider>
         <DeleteContextProvider>
           <Layout>
-            {isLoading ? <PFLoader /> : <Component {...pageProps} />}
+            {isLoading ? (
+              <PFLoader />
+            ) : (
+              <ErrorBoundary>
+                <Component {...pageProps} />
+              </ErrorBoundary>
+            )}
           </Layout>
         </DeleteContextProvider>
       </UserProvider>

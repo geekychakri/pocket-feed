@@ -1,7 +1,6 @@
 import { useState, useContext } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
-import Image from "next/image";
 
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { ChevronRight } from "@styled-icons/boxicons-solid/ChevronRight";
@@ -14,6 +13,7 @@ import { getSession, withPageAuthRequired } from "@auth0/nextjs-auth0";
 import dbConnect from "../../utils/db";
 import User from "./../../models/User";
 import { DeleteContext } from "../../contexts/DeleteContext";
+import ImageWithFallback from "../../components/ImageWithFallback";
 
 const toastStyles = {
   fontSize: "2rem",
@@ -93,13 +93,14 @@ function CategoryFeed({ feedData }) {
                   className="category-feed__item-link"
                 >
                   {item.favicon ? (
-                    <Image
+                    <ImageWithFallback
                       src={item.favicon}
-                      alt="feed-logo"
+                      alt="logo"
                       className="category-feed__image"
-                      width="30"
-                      height="30"
+                      width="32"
+                      height="32"
                       quality={80}
+                      title={item.title}
                     />
                   ) : (
                     <span className="add__feed-image category__default-img">
@@ -109,7 +110,7 @@ function CategoryFeed({ feedData }) {
                   <span className="u-ml1-5">{item.title}</span>
                 </Link>
 
-                <div className="category__feed-icon">
+                <div className="category-feed__icon">
                   {isActive ? (
                     <button
                       onClick={() => deleteFeed(item.feedId)}

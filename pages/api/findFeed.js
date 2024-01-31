@@ -1,10 +1,12 @@
 import feedFinder from "@hughrun/feedfinder";
 import rssFinder from "rss-finder";
-import ytch from "yt-channel-info";
+import { Client } from "youtubei";
 import { withApiAuthRequired } from "@auth0/nextjs-auth0";
 
 export default withApiAuthRequired(async (req, res) => {
   const { url, category } = req.body;
+
+  const youtube = new Client();
 
   switch (category) {
     case "twitter": {
@@ -60,7 +62,9 @@ export default withApiAuthRequired(async (req, res) => {
         res.status(200).json(data);
       } catch (err) {
         console.log(err);
-        res.status(500).json({ msg: "Something went wrong" });
+        res.status(500).json({
+          msg: "Something went wrong.",
+        });
       }
       break;
     }
@@ -75,9 +79,9 @@ export default withApiAuthRequired(async (req, res) => {
           console.log("YOUTUBE");
           const channelId = res1.feedUrls[0].url.split("?")[1].split("=")[1];
           console.log("CHANNEL_ID", channelId);
-          const ytResponse = await ytch.getChannelInfo(channelId);
-
-          ytFavicon = ytResponse.authorThumbnails[0].url;
+          const ytResponse = await youtube.getChannel(channelId);
+          console.log(ytResponse);
+          ytFavicon = ytResponse.thumbnails[0].url;
         }
 
         console.log("YT_FAVICON", ytFavicon);
@@ -106,7 +110,9 @@ export default withApiAuthRequired(async (req, res) => {
         res.status(200).json(data);
       } catch (err) {
         console.log("ERROR", err);
-        res.status(500).json({ msg: "Something went wrong" });
+        res.status(500).json({
+          msg: "Something went wrong. Please make sure you've selected the correct category.",
+        });
       }
     }
   }
