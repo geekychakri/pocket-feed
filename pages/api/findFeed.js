@@ -1,12 +1,11 @@
 import feedFinder from "@hughrun/feedfinder";
 import rssFinder from "rss-finder";
-import { Client } from "youtubei";
+
 import { withApiAuthRequired } from "@auth0/nextjs-auth0";
+import { getYTChannelAvatar } from "../../utils/getYTChannelAvatar";
 
 export default withApiAuthRequired(async (req, res) => {
   const { url, category } = req.body;
-
-  const youtube = new Client();
 
   switch (category) {
     case "twitter": {
@@ -79,9 +78,8 @@ export default withApiAuthRequired(async (req, res) => {
           console.log("YOUTUBE");
           const channelId = res1.feedUrls[0].url.split("?")[1].split("=")[1];
           console.log("CHANNEL_ID", channelId);
-          const ytResponse = await youtube.getChannel(channelId);
-          console.log(ytResponse);
-          ytFavicon = ytResponse.thumbnails[0].url;
+          const ytChannelAvatarUrl = await getYTChannelAvatar(channelId);
+          ytFavicon = ytChannelAvatarUrl;
         }
 
         console.log("YT_FAVICON", ytFavicon);
@@ -93,7 +91,7 @@ export default withApiAuthRequired(async (req, res) => {
             res.status(200).json({
               ...res2,
               feed: res2.feed,
-              favicon: ytFavicon || res1.site.favicon,
+              favicon: category === "youtube" ? ytFavicon : res1.site.favicon,
             });
             return;
           } catch (err) {
@@ -105,7 +103,7 @@ export default withApiAuthRequired(async (req, res) => {
           url: res1.site.url,
           feed: res1.feedUrls[0].url,
           title: res1.site.title,
-          favicon: ytFavicon || res1.site.favicon,
+          favicon: category === "youtube" ? ytFavicon : res1.site.favicon,
         };
         res.status(200).json(data);
       } catch (err) {
