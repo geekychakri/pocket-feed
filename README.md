@@ -40,6 +40,7 @@ Create an .env file in root and add your variables
   AUTH0_CLIENT_SECRET=
   MONGODB_URI=
   TWITTER_BEARER_TOKEN=
+  YT_API_KEY=
 ```
 
 Start the app
